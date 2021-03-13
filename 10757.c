@@ -1,55 +1,47 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
-int numlen(int a)
+void str_swap(char *s)
 {
-	int i = 0;
-
-	while (a > 0)
+	int len = strlen(s);
+	
+	for (int i = 0; i < len / 2; i++)
 	{
-		a /= 10;
-		i++;
+		char tmp = s[i];
+		s[i] = s[len - i - 1];
+		s[len - i - 1] = tmp;
 	}
-	return (i);
 }
 
 int main()
 {
-	char a[10000];
-	char b[10000];
-	int alen;
-	int blen;
-	int anslen;
-	int t;
-	char *ans;
-	int i = 0;
-	int k = 0;
+	char a[10002] = {0};
+	char b[10002] = {0};
+	char ans[100003] = {0};
+	int olim = 0;
+	int large;
+	int plus;
+	int i;
 
 	scanf("%s %s", a, b);
-	alen = strlen(a);
-	blen = strlen(b);
-	anslen = (alen >= blen ? alen : blen);
-	t = anslen;
-	ans = (char *)malloc(sizeof(char) * (t + 2));
-	while (blen > 0 && alen > 0)
+	str_swap(a);
+	str_swap(b);
+	large = strlen(a) > strlen(b) ? strlen(a) : strlen(b);
+	for (i = 0; i < large; i++)
 	{
-		if ((k = i + a[--alen] - '0' + b[--blen] - '0') >= 10)
-			i = 1;
+		plus = a[i] - '0' + b[i] - '0' + olim;
+		while (plus < 0)
+			plus += '0';
+		if (plus > 9)
+			olim = 1;
 		else
-			i = 0;
-		ans[t--] = k % 10 + '0';
+			olim = 0;
+		ans[i] = plus % 10 + '0';
 	}
-	while (t > 0)
-	{
-		if ((k = i + a[--alen] - '0') >= 10)
-			i = 1;
-		else
-			i = 0;
-		ans[t--] = k % 10 + '0';
-	}
-	ans[0] = i + '0';
-	ans[anslen + 1] = '\0';
-	free(ans);
+	if (olim == 1)
+		ans[i++] = '1';
+	ans[i] = '\0';
+	str_swap(ans);
+	printf("%s", ans);
 	return 0;
 }

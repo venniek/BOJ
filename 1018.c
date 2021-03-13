@@ -78,16 +78,16 @@ void make_board(int n, int m)
 int main()
 {
 	int n, m;
-    int min = 64;
+	int min = 64;
 
 	make_case();
 	scanf("%d %d", &n, &m);
 	make_board(n, m);
-    make_min(&min, n, m);
-    printf("%d", min);
-    for (int i = 0; i < 8; i++)
-        free(board[i]);
-   free(board);
+	make_min(&min, n, m);
+	printf("%d", min);
+	for (int i = 0; i < 8; i++)
+		free(board[i]);
+	free(board);
 
 	return 0;
 }
