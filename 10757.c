@@ -17,7 +17,7 @@ int main()
 {
 	char a[10002] = {0};
 	char b[10002] = {0};
-	char ans[100003] = {0};
+	char ans[10003] = {0};
 	int olim = 0;
 	int large;
 	int plus;
