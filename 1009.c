@@ -1,25 +1,17 @@
 #include <stdio.h>
 
-int ans(int a, int b)
-{
-	int re[4];
-
-	re[0] = a;
-	for (int i = 1; i < 4; i++)
-		re[i] = re[i - 1] * a % 10;
-	if (b == 0)
-		b = 4;
-	return (re[b - 1]);
-}
-
 int make_ans(int a, int b)
 {
+	int ans = 1;
+
 	if (a == 0)
 		return (10);
 	if (a == 1 || a == 5 || a == 6)
 		return (a);
-	else
-		return (ans(a, b));
+	if (b == 0)
+		b = 4;
+	while (b-- > 0) ans = ans * a % 10;
+	return (ans);
 }
 
 int main()
