@@ -6,11 +6,9 @@ int cmp(const void *a, const void *b)
 	int n1 = *(int *)a;
 	int n2 = *(int *)b;
 
-	if (n1 < n2)
-		return -1;
-	if (n1 > n2)
-		return 1;
-	return 0;
+	if (n1 == n2)
+		return 0;
+	return (n1 > n2 ? 1 : -1);
 }
 
 int ft_max(int a, int b)
