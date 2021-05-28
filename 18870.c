@@ -37,27 +37,27 @@ int main()
 {
 	int n;
 	int* num;
-	int* numc;
-	int* nums;
+	int* numcopy;
+	int* numonly;
 
 	scanf("%d", &n);
 	num = (int*)malloc(sizeof(int) * n);
-	numc = (int*)malloc(sizeof(int) * n);
-	nums = (int*)malloc(sizeof(int) * n);
+	numcopy = (int*)malloc(sizeof(int) * n);
+	numonly = (int*)malloc(sizeof(int) * n);
 	for (int i = 0; i < n; i++)
 	{
 		scanf("%d", &num[i]);
-		numc[i] = num[i];
+		numcopy[i] = num[i];
 	}
 	qsort(num, n, sizeof(int), compare);
 	int j = 0;
-	nums[j++] = num[0];
+	numonly[j++] = num[0];
 	for (int i = 1; i < n; i++)
 	{
 		if (num[i] != num[i - 1])
-			nums[j++] = num[i];
+			numonly[j++] = num[i];
 	}
 	for (int i = 0; i < n; i++)
-		printf("%d ", search(nums, j, numc[i]));
+		printf("%d ", search(numonly, j, numcopy[i]));
 	return 0;
 }
