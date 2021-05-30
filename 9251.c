@@ -35,6 +35,7 @@ int main()
 					ans = (max(map[i - 1][k], map[i][k - 1]));
 			}
 			map[i][k] = ans;
+		}
 	}
 	printf("%d", map[len2][len1]);
 	return 0;
