@@ -1,38 +1,30 @@
 #include <iostream>
 
-int origin;
-
 using namespace std;
+int n;
 
-void make_map(int **map, int n)
+int star(int i, int j, int now)
 {
-	if (n == 1)
-		return ;
-	for (int tmpi = 0; tmpi < origin / n; tmpi++) {
-		for (int tmpk = 0; tmpk < origin / n; tmpk++) {
-			for (int i = n / 3; i < n / 3 * 2; i++) {
-				for (int k = n / 3; k < n / 3 * 2; k++)
-					map[i + tmpi * n][k + tmpk * n] = 0;
-			}
-		}
-	}
-	make_map(map, n / 3);
+	if (now == 1)
+		return 1;
+	if (i >= now / 3 && i < now - now / 3 && j >= now / 3 && j < now - now / 3)
+		return 0;
+	else
+		return star(i % (now / 3), j % (now / 3), now / 3);
 }
 
 int main()
 {
-	cin >> origin;
-	int **map = new int *[origin];
-	for (int i = 0; i < origin; i++)
+	cin >> n;
+	for (int i = 0; i < n; i++)
 	{
-		map[i] = new int[origin];
-		for (int k = 0; k < origin; k++)
-			map[i][k] = 1;
-	}
-	make_map(map, origin);
-	for (int i = 0; i < origin; i++) {
-		for (int k = 0; k < origin; k++)
-			cout << (map[i][k] == 1 ? '*' : ' ');
+		for (int j = 0; j < n; j++)
+		{
+			if (star(i, j, n) == 1)
+				cout << "*";
+			else
+				cout << " ";
+		}
 		cout << '\n';
 	}
 	return 0;
