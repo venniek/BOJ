@@ -2,9 +2,7 @@
 #include <string>
 using namespace std;
 
-int del;
 int n;
-int ans1, ans2;
 string str;
 
 int main()
@@ -12,8 +10,8 @@ int main()
 	cin >> n;
 	while (n--)
 	{
-        del = 0;
-        ans1 = 0;
+        int del = 0;
+        int ans1 = 0; int ans2 = 0;
 		cin >> str;
 		int en = str.size() - 1;
 		for (int st = 0; st < en; st++)
@@ -40,9 +38,6 @@ int main()
 		}
 		if (del == 1 && ans1 != 2)
 			ans1 = 1;
-
-		del = 0;
-		ans2 = 0;
 		en = str.size() - 1;
 		for (int st = 0; st < en; st++)
 		{
