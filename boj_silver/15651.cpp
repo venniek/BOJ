@@ -2,26 +2,22 @@
 using namespace std;
 
 int n, m;
-int ans[9];
 int done[9];
 
 void find_nm(int cnt)
 {
 	if (cnt == m)
 	{
-		for (int i = 0; i < m ; i++)
-			cout << ans[i] << " ";
+		for (int i = 0; i < m; i++)
+			cout << done[i] << " ";
 		cout << '\n';
 		return ;
 	}
 	for (int i = 1; i <= n; i++)
 	{
-		if (done[i] == 1)
-			continue;
-		ans[cnt] = i;
-		done[i] = 1;
+		done[cnt] = i;
 		find_nm(cnt + 1);
-		done[i] = 0;
+		done[cnt] = 0;
 	}
 }
 
