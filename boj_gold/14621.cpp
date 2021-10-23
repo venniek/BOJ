@@ -24,7 +24,7 @@ int find(int dot)
 {
     if (dot == parent[dot])
         return dot;
-    return find(parent[dot]);
+    return parent[dot] = find(parent[dot]);
 }
 
 void merge(int start, int end)
