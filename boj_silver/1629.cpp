@@ -1,10 +1,8 @@
 #include <iostream>
-#include <vector>
-
+#define LL long long
 using namespace std;
 
-
-long long multi(long long a, long long b, long long c)
+LL multi(LL a, LL b, LL c)
 {
 	if (b == 1)
 		return (a % c);
@@ -17,8 +15,9 @@ long long multi(long long a, long long b, long long c)
 
 int main()
 {
-	long long a, b, c;
-	scanf("%lld %lld %lld", &a, &b, &c);
-	printf("%lld", multi(a, b, c));
+    ios::sync_with_stdio(0); cin.tie(0);
+	LL a, b, c;
+	cin >> a >> b >> c;
+	cout << multi(a, b, c);
 	return 0;
 }
