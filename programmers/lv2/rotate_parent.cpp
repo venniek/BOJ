@@ -5,8 +5,7 @@ using namespace std;
 
 stack<char> st;
 
-int match(char a, char b)
-{
+int match(char a, char b) {
     if (a == '{' && b == '}')
         return 1;
     if (a == '[' && b == ']')
@@ -20,21 +19,17 @@ int solution(string s) {
     int answer = 0;
     int len = s.size();
     
-    for (int i = 0; i < len; i++)
-    {
+    for (int i = 0; i < len; i++) {
         int right = 1;
-        for (int k = 0; k < len; k++)
-        {
+        for (int k = 0; k < len; k++) {
             if (s[k] == '[' || s[k] == '{' || s[k] == '(')
                 st.push(s[k]);
-            else if (s[k] == ']' || s[k] == '}' || s[k] == ')')
-            {
-                if (st.empty() || match(st.top(), s[k]) == 0)
-                {
+            else if (s[k] == ']' || s[k] == '}' || s[k] == ')') {
+                if (st.empty() || match(st.top(), s[k]) == 0) {
                     right = 0;
                     break;
                 }
-               else
+                else
                     st.pop();
             }
         }
