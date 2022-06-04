@@ -5,4 +5,4 @@ let nums = readLine()!.components(separatedBy:" ").map{ Double($0)! }
 for i in 0..<n {
 	sum += nums[i]
 }
-print(sum / Double(n) * 100 / nums.max()!)
+print(sum / Double(n) / nums.max()! * 100)
