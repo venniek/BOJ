@@ -1,10 +1,10 @@
 var nums = [Int](repeating: 0, count: 10005)
 
 func cons(n: Int) -> Int {
-	var sum = 0
+	var sum = n
 	var now = n
 	while now > 0 {
-		sum += now
+		sum += now % 10
 		now /= 10
 	}
 	return sum
@@ -12,14 +12,10 @@ func cons(n: Int) -> Int {
 
 for i in 1...10000 {
 	var now = i
-	var flag = 0
-	while now < 10000 {
-		if nums[now] == 1 {
-			break
-		}
-		if flag != 0 { nums[now] = 1 }
+	while now <= 10000 {
+		if nums[now] == 1 { break }
+		if now != i { nums[now] = 1 }
 		now = cons(n: now)
-		flag += 1
 	}
 }
 for i in 1...10000 {
