@@ -1,18 +1,15 @@
 import Foundation
 
 func solution(_ n:Int, _ computers:[[Int]]) -> Int {
-    var used = [Bool](repeating: false, count: n)
     var com = computers
     var ans = 0
-    
-    if n == 1 {
-        return 1
-    }
+    var flag: Bool
     
     func link(_ idx: Int) {
-        used[idx] = true
         for i in 0..<com.count {
-            if com[idx][i] == 1 {
+            if i != idx && com[idx][i] == 1 {
+                flag = true
+                com[i][i] = 0
                 com[idx][i] = 0
                 link(i)
             }
@@ -20,15 +17,12 @@ func solution(_ n:Int, _ computers:[[Int]]) -> Int {
     }
     
     for i in 0..<com.count {
-        for j in 0..<com[i].count {
-            if i == j { continue }
-            if com[i][j] == 1 {
-                link(i)
-                ans += 1
-                continue
-            }
+        flag = false
+        link(i)
+        if flag || com[i][i] == 1 {
+            ans += 1
         }
     }
     
-    return ans + used.filter{ $0 == false }.count
+    return ans
 }
